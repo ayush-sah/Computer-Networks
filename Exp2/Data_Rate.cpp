@@ -5,27 +5,28 @@ using namespace std;
 class DataRate{
     private:
         int Bandwidth, Levels, SNR;
-        float Bitrate, Capacity;
+        float Max_Capacity;
         string Noise;
     public:
         DataRate(){
             cout << "Enter the Bandwidth: ";
             cin >> Bandwidth;
+            Levels = 0;
+            
+            cout << "Enter levels(Enter 0 if levels not given): ";
+            cin >> Levels;
 
-            cout << "Is the channel Noiseless(Y/N): ";
-            cin >> Noise;
-
-            if (Noise=="Y"){
-                cout << "Enter levels: ";
-                cin >> Levels;
-                Bitrate = ((2 * Bandwidth) * (log(Levels)/log(2)));
-                cout << "Bit Rate = " << Bitrate << " bps." << endl;
+            if(Levels!=0){
+                Max_Capacity = ((2 * Bandwidth) * (log(Levels)/log(2)));
+                cout << "Bit Rate = " << Max_Capacity << " bps." << endl;
             }
             else{
                 cout << "Enter Signal to Noise ratio (SNR): ";
                 cin >> SNR;
-                Capacity = (Bandwidth * (log(1+SNR)/log(2)));
-                cout << "Capacity = " << Capacity << " bps." << endl;
+                Max_Capacity = (Bandwidth * (log(1+SNR)/log(2)));
+                cout << "Capacity = " << Max_Capacity << " bps." << endl;
+                Levels = pow(2,Max_Capacity/(2*Bandwidth));
+                cout << "Levels = " << Levels << " bps." << endl;
             }
         }
 };
