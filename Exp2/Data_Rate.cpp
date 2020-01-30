@@ -1,5 +1,5 @@
-import<iostream>
-import<math.h>
+#include <iostream>
+#include <math.h>
 using namespace std;
 
 class DataRate{
@@ -16,9 +16,9 @@ class DataRate{
             cin >> Noise;
 
             if (Noise=="Y"){
-                cout << "Enter levels: "
+                cout << "Enter levels: ";
                 cin >> Levels;
-                Bitrate = ((2 * Bandwidth) * (log(Levels)/log(2)))
+                Bitrate = ((2 * Bandwidth) * (log(Levels)/log(2)));
                 cout << "Bit Rate = " << Bitrate << " bps." << endl;
             }
             else{
