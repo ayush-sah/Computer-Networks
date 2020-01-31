@@ -4,7 +4,7 @@ using namespace std;
 
 class DataRate{
     private:
-        int Bandwidth, Levels, SNR;
+        int Bandwidth, value, Levels;
         float Max_Capacity;
         string Noise;
     public:
@@ -13,7 +13,7 @@ class DataRate{
             cin >> Bandwidth;
             Levels = 0;
             
-            cout << "Enter levels(Enter 0 if levels not given): ";
+            cout << "Enter Levels or SNR: ";
             cin >> Levels;
 
             if(Levels!=0){
