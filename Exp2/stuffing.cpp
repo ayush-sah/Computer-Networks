@@ -66,7 +66,7 @@ public:
         string re_str = "";
         for(int i = 0; i < binary.length(); i++){
             count--;
-            if(binary.at(i)=='1')
+            if(binary[i]=='1')
                 decimal += pow(2.0,(float)count);
             if(count==0){
                 re_str += (char)decimal;
