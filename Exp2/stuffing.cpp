@@ -2,15 +2,13 @@
 #include<string>
 #include<bits/stdc++.h>
 using namespace std;
-
+string str;
 class Stuffing{
 private:
-    string str, stuff_str, de_stuff;
+    string stuff_str, de_stuff;
     int asc;
 public:
     void charstuff(){
-        cout << "Enter string you want to stuff: ";
-        getline(cin,str);
         cout << "\nOriginal Data: " << str << endl;
         int len = str.length();
 
@@ -19,11 +17,9 @@ public:
 
         de_stuff = stuff_str.replace(0,6,"");
         de_stuff = stuff_str.replace(len,de_stuff.length(),"");
-        cout << "\nDe-Stuffed Data: " <<  de_stuff << endl;
+        cout << "\nDe-Stuffed Data: " <<  de_stuff << endl << endl << endl;
     }
     void bitstuff(){
-        cout << "Enter string you want to stuff: ";
-        getline(cin,str);
         string binary = "";
         string temp_bin = "";
         for(int i = 0; i < str.length(); i++){
@@ -39,7 +35,7 @@ public:
                 asc/=2;
             }
         }
-        cout << "Entered String in binary: " << binary << endl;
+        cout << "\nEntered String in binary: " << binary << endl;
         int ones = 0;
         for(int i = 0; i < binary.length(); i++){
             if(binary[i]=='1')
@@ -51,7 +47,7 @@ public:
                 binary.insert(i+1,"0");
             }
         }
-        cout << "Stuffed Data \t\t: " << binary << endl;
+        cout << "\nStuffed Data \t\t: " << binary << endl;
         ones = 0;
         for(int i = 0; i < binary.length(); i++){
             if(binary[i]=='1')
@@ -60,24 +56,27 @@ public:
                 ones = 0;
             if(ones==5){
                 ones = 0;
-                binary.erase(binary.begin()+i);
+                binary.erase(binary.begin()+i+1);
             }
         }
-        cout << "De-Stuffed Data \t: " << binary << endl;
+        cout << "\nDe-Stuffed Data \t: " << binary << endl << endl << endl;
     }
 };
 
 int main(){
     Stuffing stuff;
     int action;
-    stuff.bitstuff();
     do{
-        cout << "1. Character Stuffing\n2. Bit Stuffing\n3. Exit\nEnter action you want to perform: ";
+        cout << "1. Character Stuffing\n2. Bit Stuffing\n3. Exit\n\nEnter action you want to perform: ";
         cin >> action;
-
+        if(action!=3){
+            cout << "\nEnter string you want to stuff: ";
+            cin.ignore();
+            getline(cin,str);
+        }
         switch(action){
-            case 1: stuff.charstuff();
-            case 2: stuff.bitstuff();
+            case 1: stuff.charstuff();  break;
+            case 2: stuff.bitstuff();   break;
             case 3: break;
             default: cout << "Invalid input. Try Again";
         }
