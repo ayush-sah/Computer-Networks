@@ -10,15 +10,15 @@ private:
     int asc;
 public:
     void charstuff(){
-        cout << "\nOriginal Data: " << str << endl;
+        cout << "\nOriginal Data\t\t\t: " << str << endl;
         int len = str.length();
 
         stuff_str = "DLESTX" + str + "DLEETX";
-        cout << "\nStuffed Data: " << stuff_str << endl;
+        cout << "\nStuffed Data\t\t\t: " << stuff_str << endl;
 
         de_stuff = stuff_str.replace(0,6,"");
         de_stuff = stuff_str.replace(len,de_stuff.length(),"");
-        cout << "\nDe-Stuffed Data: " <<  de_stuff << endl << endl << endl;
+        cout << "\nDe-Stuffed Data\t\t\t: " <<  de_stuff << endl << endl << endl;
     }
     void bitstuff(){
         string binary = "";
@@ -36,8 +36,7 @@ public:
                 asc/=2;
             }
         }
-        cout << str;
-        cout << "\nEntered String in binary: " << binary << endl;
+        cout << "\nEntered String in binary\t: " << binary << endl;
         int ones = 0;
         for(int i = 0; i < binary.length(); i++){
             if(binary[i]=='1')
@@ -49,7 +48,7 @@ public:
                 binary.insert(i+1,"0");
             }
         }
-        cout << "\nStuffed Data \t\t: " << binary << endl;
+        cout << "\nStuffed Data \t\t\t: " << binary << endl;
         ones = 0;
         for(int i = 0; i < binary.length(); i++){
             if(binary[i]=='1')
@@ -61,7 +60,7 @@ public:
                 binary.erase(binary.begin()+i+1);
             }
         }
-        cout << "\nDe-Stuffed Data \t: " << binary << endl;
+        cout << "\nDe-Stuffed Data \t\t: " << binary << endl;
         int count = 7, decimal = 0;
         string re_str = "";
         for(int i = 0; i < binary.length(); i++){
@@ -74,7 +73,7 @@ public:
                 count = 7;
             }
         }
-        cout << "\nRe-String \t: " << re_str << endl << endl << endl;
+        cout << "\nRe-String \t\t\t: " << re_str << endl << endl << endl;
     }
 };
 
@@ -85,7 +84,7 @@ int main(){
         cout << "1. Character Stuffing\n2. Bit Stuffing\n3. Exit\n\nEnter action you want to perform: ";
         cin >> action;
         if(action==1 || action==2){
-            cout << "\nEnter string you want to stuff: ";
+            cout << "\nEnter string you want to stuff\t: ";
             cin.ignore();
             getline(cin,str);
         }
