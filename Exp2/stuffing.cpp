@@ -71,7 +71,6 @@ int main(){
     Stuffing stuff;
     int action;
     stuff.bitstuff();
-    /*
     do{
         cout << "1. Character Stuffing\n2. Bit Stuffing\n3. Exit\nEnter action you want to perform: ";
         cin >> action;
@@ -83,5 +82,4 @@ int main(){
             default: cout << "Invalid input. Try Again";
         }
     }while(action !=3);
-    */
 }
