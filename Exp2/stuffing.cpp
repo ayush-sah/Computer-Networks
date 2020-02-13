@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<bits/stdc++.h>
 using namespace std;
 
 class Stuffing{
@@ -23,30 +24,46 @@ public:
     void bitstuff(){
         cout << "Enter string you want to stuff: ";
         getline(cin,str);
-        string bin = "";
+        string binary = "";
+        string temp_bin = "";
         for(int i = 0; i < str.length(); i++){
             asc = str[i];
+            reverse(temp_bin.begin(),temp_bin.end());
+            binary += temp_bin;
+            temp_bin = "";
             while(asc>0){
                 if(asc%2==0)
-                    bin += "0";
+                    temp_bin += "0";
                 else
-                    bin += "1";
+                    temp_bin += "1";
                 asc/=2;
             }
         }
-
-        int one = 0;
-        for(int i = 0; i < bin.length(); i++){
-            if(bin[i]=='1')
-                one++;
-            if(bin[i]=='0')
-                one = 0;
-            if(one==5){
-                one = 0;
-                bin.insert(i+1,"0");
+        cout << "Entered String in binary: " << binary << endl;
+        int ones = 0;
+        for(int i = 0; i < binary.length(); i++){
+            if(binary[i]=='1')
+                ones++;
+            if(binary[i]=='0')
+                ones = 0;
+            if(ones==5){
+                ones = 0;
+                binary.insert(i+1,"0");
             }
         }
-        cout << bin;
+        cout << "Stuffed Data \t\t: " << binary << endl;
+        ones = 0;
+        for(int i = 0; i < binary.length(); i++){
+            if(binary[i]=='1')
+                ones++;
+            if(binary[i]=='0')
+                ones = 0;
+            if(ones==5){
+                ones = 0;
+                binary.erase(binary.begin()+i);
+            }
+        }
+        cout << "De-Stuffed Data \t: " << binary << endl;
     }
 };
 
