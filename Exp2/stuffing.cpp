@@ -23,8 +23,13 @@ public:
     void bitstuff(){
         string binary = "";
         string temp_bin = "";
+        int flag=0;
         for(int i = 0; i <= str.length(); i++){
             asc = str[i];
+            if(flag!=0){
+                while(temp_bin.length()<7)
+                    temp_bin += "0";
+            }
             reverse(temp_bin.begin(),temp_bin.end());
             binary += temp_bin;
             temp_bin = "";
@@ -35,8 +40,10 @@ public:
                     temp_bin += "1";
                 asc/=2;
             }
+            flag++;
         }
         cout << "\nEntered String in binary\t: " << binary << endl;
+        int or_len = binary.length();
         int ones = 0;
         for(int i = 0; i < binary.length(); i++){
             if(binary[i]=='1')
@@ -48,7 +55,23 @@ public:
                 binary.insert(i+1,"0");
             }
         }
-        cout << "\nStuffed Data \t\t\t: " << binary << endl;
+        cout << "\nStuffed Data \t\t\t: ";
+        for(int i = 0; i < binary.length(); i++){
+            if(ones==5){
+                ones = 0;
+                cout << " " << binary[i] << " ";
+            }
+            else{
+                if(binary[i]=='1')
+                    ones++;
+                if(binary[i]=='0')
+                    ones = 0;
+                cout << binary[i];
+            }
+        }
+        cout << endl;
+        if(or_len = binary.length())
+            cout << "No Change in Data Link."<< endl;
         ones = 0;
         for(int i = 0; i < binary.length(); i++){
             if(binary[i]=='1')
