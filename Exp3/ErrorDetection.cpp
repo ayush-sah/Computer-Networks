@@ -151,6 +151,78 @@ class ErrorDetection{
         while(ans[a]!='1')
             ans.erase(ans.begin()+0);
         cout << "CRC is : " << dividend + ans << endl;
+
+        /*
+        for(int i = 0; i < divisor.length()-1;i++)
+            dividend += '0';
+        
+        int int_dividend[100], int_divisor[20];
+        for(int i = 0; i < dividend.length(); i++)
+            int_dividend[i] = dividend[i] - '0';
+        
+        for(int i = 0; i < divisor.length(); i++)
+            int_divisor[i] = divisor[i] - '0';
+
+        int temp[100];
+        int n;
+        for(int i = 0; i < sizeof(int_dividend)/sizeof(int_dividend[0]); i++)
+            temp[i] = int_dividend[i];
+        
+        for(int i = 0; i < sizeof(int_divisor)/sizeof(int_divisor[0]); i++){
+            temp[i] = int_dividend[i] ^ int_divisor[i];
+            n = i;
+        }
+
+        int flag = 0, m = 0, count = 0, k=0;
+        while(n <= sizeof(int_dividend)/sizeof(int_dividend[0])){
+            while(flag == 0){
+                if(temp[m] == 0)
+                    m++;
+                else
+                    flag = 1;
+            }
+            flag = 0;
+            for(int i = m; i < (sizeof(int_divisor)/sizeof(int_divisor[0]))+m;i++){
+                if(temp[i]==0||temp[i]==1)
+                    count++;
+            }
+            if(count == (sizeof(int_divisor)/sizeof(int_divisor[0]))){
+                for(int i = m; i < (sizeof(int_divisor)/sizeof(int_divisor[0]))+m;i++){
+                    temp[i] = temp[i]^int_divisor[k];
+                    k++;
+                }
+                k = 0;
+            }
+            else
+                break;
+            count = 0;
+            n = ((sizeof(int_divisor)/sizeof(int_divisor[0]))+m)+1;
+        }
+
+        int rsize = sizeof(int_dividend)/sizeof(int_dividend[0]) - 1;
+        int rem[100];
+        for(int i = 1; i < (sizeof(int_divisor)/sizeof(int_divisor[0]))+m;i++){
+            rem[rsize] = temp[rsize];
+            rsize--;
+        }
+        for(int i = 1; i < (sizeof(int_divisor)/sizeof(int_divisor[0]))+m;i++)
+            cout << rem[i];
+        */
+        /*
+        int dec_dividend = 0, dec_divisor = 0, power = 0;
+        for(int i = dividend.length()-1; i >= 0 ; i--){
+            if(dividend[i]=='1')
+                dec_dividend += pow(2.0, (float)power);
+            power++;
+        }
+        power = 0;
+        for(int i = divisor.length()-1; i >= 0 ; i--){
+            if(divisor[i]=='1')
+                dec_divisor += pow(2.0, (float)power);
+            power++;
+        }
+        int remainder = dec_dividend % dec_divisor;
+        */
     }
 };
 
