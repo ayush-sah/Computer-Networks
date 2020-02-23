@@ -141,15 +141,16 @@ class ErrorDetection{
         for(int i = 1; i < divisor.length(); i++)
             ans += '0';
         
-        for(int i = 0; i <= ans.length()-divisor.length();){
+        int i = 0;
+        while(i <= ans.length() - divisor.length()){
             for(int j = 0; j < divisor.length(); j++)
                 ans[i+j] = ans[i+j] == divisor[j]? '0' : '1';
-            while(i<ans.length()&& ans[i]!='1')
+            while((i<ans.length()) && (ans[i]!='1'))
                 i++;
         }
-        int a = 0;
-        while(ans[a]!='1')
-            ans.erase(ans.begin()+0);
+
+        while(ans[0]!='1')
+            ans.erase(ans.begin());
         cout << "CRC is : " << dividend + ans << endl;
 
         /*
