@@ -1,5 +1,6 @@
 #include<iostream>
 #include<math.h>
+#include<string>
 using namespace std;
 
 class ErrorDetection{
@@ -8,14 +9,15 @@ class ErrorDetection{
     public:
     ErrorDetection(){
         do{
-            cout << "\n1. LRC\n2. VRC\n3. Checksum\n4. CRC\n5. Exit\nEnter action you want to perform: ";
+            cout << "\n1. LRC\n2. VRC\n3. Checksum\n4. CRC\n5. Hamming\n6. Exit\nEnter action you want to perform: ";
             cin >> action;
             switch(action){
                 case 1: lrc(); break;
                 case 2: vrc(); break;
                 case 3: checksum(); break;
                 case 4: crc(); break;
-                case 5: break;
+                case 5: hamming(); break;
+                case 6: break;
                 default: cout << "Invalid input. Enter Again.";
             }
         }while(action!=5);
@@ -153,6 +155,25 @@ class ErrorDetection{
             ans.erase(ans.begin());
         cout << "CRC is : " << dividend + ans << endl;
 
+    }
+
+    void hamming(){
+        cin.ignore();
+        getstring();
+        ans = "";
+        int r = 0;
+        while(pow(2, ++r) < len + r + 1);
+        int totalbits = len + r;
+        char *arr = new char[totalbits];
+        int k = len, raise = 0;
+        for(int i = 0; i < totalbits; i++){
+            if(pow(2, raise)==i+1){
+                arr[i] = 'P';
+                raise++;
+            }
+            else
+                arr[i] = str[0][--k];
+        }
     }
 };
 
