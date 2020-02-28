@@ -130,19 +130,19 @@ class ErrorDetection{
         }
         cout << "Checksum is : " << ans << endl;
     }
-    
+
     void crc(){
         string dividend, divisor, ans = "";
         cout << "Enter Dividend: ";
         cin >> dividend;
-        
+
         cout << "Enter Divisor: ";
         cin >> divisor;
 
         ans += dividend;
         for(int i = 1; i < divisor.length(); i++)
             ans += '0';
-        
+
         int i = 0;
         while(i <= ans.length() - divisor.length()){
             for(int j = 0; j < divisor.length(); j++)
@@ -163,10 +163,9 @@ class ErrorDetection{
         ans = "";
         int r = 0;
         while(pow(2, ++r) < len + r + 1);
-        int totalbits = len + r;
-        char *arr = new char[totalbits];
+        char *arr = new char[len + r];
         int k = len, raise = 0;
-        for(int i = 0; i < totalbits; i++){
+        for(int i = 0; i < len + r; i++){
             if(pow(2, raise)==i+1){
                 arr[i] = 'P';
                 raise++;
@@ -174,6 +173,18 @@ class ErrorDetection{
             else
                 arr[i] = str[0][--k];
         }
+        int p[3];
+        p[0] = atoi(a[0])^atoi(a[2])^atoi(a[4])^atoi(a[6]);
+        p[1] = atoi(a[1])^atoi(a[2])^atoi(a[5])^atoi(a[6]);
+        p[2] = atoi(a[4])^atoi(a[5])^atoi(a[6])^atoi(a[7]);
+        k = 0;
+        for(int i = 0; i < len+r; i++){
+            if(a[i]=='P')
+                a[i] = p[k++];
+            cout << a[i];
+        }
+
+
     }
 };
 
