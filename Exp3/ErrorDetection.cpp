@@ -20,7 +20,7 @@ class ErrorDetection{
                 case 6: break;
                 default: cout << "Invalid input. Enter Again.";
             }
-        }while(action!=5);
+        }while(action!=6);
     }
 
     void getstring(){
@@ -130,19 +130,19 @@ class ErrorDetection{
         }
         cout << "Checksum is : " << ans << endl;
     }
-    
+
     void crc(){
         string dividend, divisor, ans = "";
         cout << "Enter Dividend: ";
         cin >> dividend;
-        
+
         cout << "Enter Divisor: ";
         cin >> divisor;
 
         ans += dividend;
         for(int i = 1; i < divisor.length(); i++)
             ans += '0';
-        
+
         int i = 0;
         while(i <= ans.length() - divisor.length()){
             for(int j = 0; j < divisor.length(); j++)
@@ -163,18 +163,32 @@ class ErrorDetection{
         ans = "";
         int r = 0;
         while(pow(2, ++r) < len + r + 1);
-        int totalbits = len + r;
-        char *arr = new char[totalbits];
+        char a[100];
         int k = len, raise = 0;
-        for(int i = 0; i < totalbits; i++){
+        for(int i = 0; i < len + r; i++){
             if(pow(2, raise)==i+1){
-                arr[i] = 'P';
+                a[i] = 'P';
                 raise++;
             }
             else
-                arr[i] = str[0][--k];
+                a[i] = str[0][--k];
         }
-        
+        int p[3];
+        p[0] = (a[2]-'0')^(a[4]-'0')^(a[6]-'0');
+        p[1] = (a[2]-'0')^(a[5]-'0')^(a[6]-'0');
+        p[2] = (a[4]-'0')^(a[5]-'0')^(a[6]-'0');
+        k = 0;
+        for(int i = 0; i < len+r; i++){
+            if(a[i]=='P'){
+                if(p[k++]==0)
+                    a[i] = '0';
+                else
+                    a[i] = '1';
+            }
+        }
+        for(int i = len+r-1; i >= 0; i--)
+            cout << a[i];
+        cout << endl;
     }
 };
 
