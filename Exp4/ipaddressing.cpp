@@ -79,8 +79,8 @@ public:
         octate[k] = stoi(str);
         if (dots!=3 && (slash!=0 || slash!=1))
             return 0;
-        for(int i = 0; i < k; i++){
-            if(octate[i]<0 || octate[0]>255)
+        for(int i = 0; i < 4; i++){
+            if(octate[i]<0 || octate[i]>255)
                 return 0;
         }
         return 1;
