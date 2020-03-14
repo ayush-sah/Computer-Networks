@@ -174,6 +174,7 @@ class ErrorDetection{
             else
                 arr[i] = str[0][--k];
         }
+        
     }
 };
 
